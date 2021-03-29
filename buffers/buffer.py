@@ -7,15 +7,14 @@ from utils import SumSegmentTree, MinSegmentTree
 
 class ReplayBuffer:
 
-    def __init__(self, obs_dim: int, size: int, batch_size: int = 32, gamma: float=0.99):
+    def __init__(self, obs_dim: int, action_dim: int, size: int, batch_size: int = 32):
         self.obs_buf = np.zeros([size, obs_dim], dtype=np.float32)
         self.next_obs_buf = np.zeros([size, obs_dim], dtype=np.float32)
         self.rews_buf = np.zeros([size], dtype=np.float32)
-        self.acts_buf = np.zeros([size], dtype=np.float32)
+        self.acts_buf = np.zeros([size, action_dim], dtype=np.float32)
         self.done_buf = np.zeros(size, dtype=np.float32)
         self.max_size, self.batch_size = size, batch_size
         self.ptr, self.size = 0, 0
-        self.gamma = gamma
 
 
     def store(
@@ -42,8 +41,7 @@ class ReplayBuffer:
             next_obs = self.next_obs_buf[idx],
             acts = self.acts_buf[idx],
             rews = self.rews_buf[idx],
-            done = self.done_buf[idx],
-            indices = idx)
+            done = self.done_buf[idx])
     
     def sample_batch_from_idxs(self, 
                             idx: np.ndarray) -> Dict[str, np.ndarray]:

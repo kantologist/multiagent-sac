@@ -35,13 +35,13 @@ class DQNAgent:
         # print("action size ", action_size)
         # print("state size: ", state_size)
         
-        obs_dim = state_size
-        action_dim = action_size
+        self.obs_dim = state_size
+        self.action_dim = action_size
 
-        print("action size ", action_dim)
-        print("state size: ", obs_dim)
+        print("action size ", self.action_dim)
+        print("state size: ", self.obs_dim)
 
-        self.memory = ReplayBuffer(obs_dim, memory_size, batch_size)
+        self.memory = ReplayBuffer(self.obs_dim, self.action_dim, memory_size, batch_size)
 
 
         self.batch_size = batch_size
@@ -55,12 +55,12 @@ class DQNAgent:
         self.device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
         
-        self.dqn = Network(obs_dim, action_dim)
-        self.dqn_target = Network(obs_dim, action_dim)
+        self.dqn = Network(self.obs_dim, self.action_dim)
+        self.dqn_target = Network(self.obs_dim, self.action_dim)
         self.dqn_target.load_state_dict(self.dqn.state_dict())
         self.dqn_target.eval()
 
-        self.optimizer = optim.Adam(self.dqn.parameters(), lr=5e-4)
+        self.optimizer = optim.Adam(self.dqn.parameters(), lr=5e-5)
 
         self.transition = list()
 
@@ -68,10 +68,13 @@ class DQNAgent:
 
     def select_action(self, state: np.ndarray) -> np.int64:
         """ Select an action given input """
-        selected_action = self.dqn(
-                    torch.FloatTensor(state).to(self.device)
-                )
-        selected_action = np.argmax(selected_action.detach().cpu().numpy())
+        if self.epsilon > np.random.random():
+            selected_action = np.random.random_integers(0, self.action_dim-1)
+        else:
+            selected_action = self.dqn(
+                torch.FloatTensor(state).to(self.device)
+            )
+            selected_action = np.argmax(selected_action.detach().cpu().numpy())
         # print("selected action ", type(selected_action))
 
         
@@ -116,6 +119,7 @@ class DQNAgent:
         update_cnt = 0
         epsilons = []
         losses = []
+        avg_losses= []
         scores = []
         avg_scores = []
 
@@ -136,21 +140,23 @@ class DQNAgent:
                     losses.append(loss)
                     update_cnt += 1
 
-                    self.epsilon = max(
-                        self.min_epsilon, self.epsilon - (
-                            self.max_epsilon - self.min_epsilon
-                        ) * self.epsilon_decay
-                    )
-                    epsilons.append(self.epsilon)
-                    
-                    if update_cnt % self.target_update == 0:
-                        self._target_hard_update()
+            avg_losses.append(np.mean(losses))
+            losses = []
+            self.epsilon = max(
+                self.min_epsilon, self.epsilon - (
+                    self.max_epsilon - self.min_epsilon
+                ) * self.epsilon_decay
+            )
+            epsilons.append(self.epsilon)
+            
+            if update_cnt % self.target_update == 0:
+                self._target_hard_update()
             scores.append(score)
             epsilons.append(self.epsilon)
 
             if episode >= 100:
                 avg_scores.append(np.mean(scores[-100:]))
-            self._plot(episode, scores, avg_scores, losses, epsilons)
+            self._plot(episode, scores, avg_scores, avg_losses, epsilons)
         torch.save(self.dqn.state_dict(), "model_weight/dqn.pt")
 
 
@@ -223,4 +229,4 @@ class DQNAgent:
         plt.subplot(144)
         plt.title('epsilons')
         plt.plot(epsilons)
-        plt.savefig('plots/dqn_result.png')
+        plt.savefig('plots/dqn_result1.png')

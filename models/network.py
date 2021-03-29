@@ -12,9 +12,9 @@ class Network(nn.Module):
         self.layers = nn.Sequential(
             nn.Linear(in_dim, hidden),
             nn.ReLU(),
-            nn.Linear(hidden, hidden),
+            nn.Linear(hidden, 32),
             nn.ReLU(),
-            nn.Linear(hidden, out_dim)
+            nn.Linear(32, out_dim)
         )
 
     def forward(self, x: torch.Tensor) -> torch.Tensor:
