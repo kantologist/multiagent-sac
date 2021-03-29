@@ -127,3 +127,7 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
+Navigation/Banana.app
+Continuous Control/Reacher 2.app
+Continuous Control/Reacher.app
+Collaboration and Competition/Tennis.app
