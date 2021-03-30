@@ -1,4 +1,4 @@
-""" Packaged Rainbow"""
+""" Packaged DRLND"""
 
 from typing import Dict, List, Tuple
 
@@ -32,14 +32,9 @@ class DQNAgent:
         action_size = self.brain.vector_action_space_size
         state = env_info.vector_observations[0]
         state_size = len(state)
-        # print("action size ", action_size)
-        # print("state size: ", state_size)
         
         self.obs_dim = state_size
         self.action_dim = action_size
-
-        print("action size ", self.action_dim)
-        print("state size: ", self.obs_dim)
 
         self.memory = ReplayBuffer(self.obs_dim, self.action_dim, memory_size, batch_size)
 
@@ -75,7 +70,6 @@ class DQNAgent:
                 torch.FloatTensor(state).to(self.device)
             )
             selected_action = np.argmax(selected_action.detach().cpu().numpy())
-        # print("selected action ", type(selected_action))
 
         
         if not self.is_test:
@@ -85,8 +79,6 @@ class DQNAgent:
 
     def step(self, action: np.int64) -> Tuple[np.ndarray, np.float64, bool]:
         "Take an action and return environment response"
-        # print("action type, ", action.shape)
-        # print("action ", action)
         env_info = self.env.step(action)[self.brain_name]
         next_state = env_info.vector_observations[0]   
         reward = env_info.rewards[0]                   
@@ -229,4 +221,4 @@ class DQNAgent:
         plt.subplot(144)
         plt.title('epsilons')
         plt.plot(epsilons)
-        plt.savefig('plots/dqn_result1.png')
+        plt.savefig('plots/dqn_result.png')

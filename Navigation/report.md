@@ -8,7 +8,7 @@ A Deep Q Network was used to train the agent. There's a target network that's up
 
 ### Model Architecture
 
-The neural network model used for functional approximation was an MLP with 2 hidden layers. The input layer recieves the state with a size of 37 while the output layer has 4 unit which corresponds to the size of the action. 
+The neural network model used for functional approximation was an MLP with 2 hidden layers of hidden size 64 and 32. The input layer recieves the state with a size of 37 while the output layer has 4 unit which corresponds to the size of the action. 
 
 ### Parameters
 
@@ -27,3 +27,7 @@ The model was trained with an adam optimizer using a learning rate of 5e-5 and a
 The agent was able to get an average score (over 100 episode) of 13 in about 500 episodes. The graph of the result is shown below. The graph also includes the loss and epsilon. The saved weights can be found in the model_weight directory as `model_weight/dqn.pt`
 
 ![results](../plots/dqn_result.png)
+
+### Credit
+
+Most of the code structure for DQN followed this projects [here](https://github.com/Curt-Park/rainbow-is-all-you-need)

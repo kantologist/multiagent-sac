@@ -1,9 +1,7 @@
-""" Packaged Rainbow"""
+""" Packaged DRLND"""
 from typing import Dict, List, Deque, Tuple
 from collections import deque
-import random
-import numpy as np
-from utils import SumSegmentTree, MinSegmentTree
+import numpy as nps
 
 class ReplayBuffer:
 
