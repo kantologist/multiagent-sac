@@ -1,6 +1,6 @@
 # Project Report
 
-The goal of this project was to solve the Reacher unity environment. The agent is to be able to move an arm to a target position and keeping it there. The state space is continuous of 33 dimension. The action space is also continuous of 4 dimensions with values between -1 and 1. The reward is either +0.1 for each step leading to the arm being in the target location. The state contains position, rotation, velocity and angular velocity of the arm while the action corresponds to the torque applied to the two joints of the arm.  
+The goal of this project was to solve the Reacher unity environment. The agent is to be able to move an arm to a target position and keeping it there. The state space is continuous of 33 dimension. The action space is also continuous of 4 dimensions with values between -1 and 1. The reward is +0.1 for each step leading to the arm being in the target location. The state contains position, rotation, velocity and angular velocity of the arm while the action corresponds to the torque applied to the two joints of the arm.  
 
 ### Agent Design
 
@@ -18,10 +18,10 @@ All Four networks were trained with adam optimizers using the same learning rate
 |:------:|:-----------:|:-----:|:------:|
 | Buffer size  |  int |  configuration for maximum capacity of the replay buffer |10000|
 | Learning rate  | float  |  model learing rate | 3e-4|
-|  Tau | int  | Controls the soft update of target network | 4|
+|  Tau | int  | Controls the soft update of target network | 5e-3|
 | Epsilon Decay | float | This determines how the epsilon decreases during training| 0.9 |
 | Gamma | float | discount factor | 0.99 |
-|Initial Random Steps| int | determines how many random step is taken before exploiting the model |5e3 |
+|Initial Random Steps| int | determines how many random step is taken before exploiting the model |1e4 |
 | Policy Update Frequency | int | determines the frequency of updating the policy | 2 |
 
 ### Results
