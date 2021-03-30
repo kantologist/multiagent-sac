@@ -245,7 +245,7 @@ class SacAgent:
         plt.subplot(122)
         plt.title("episode %s. Score: %s" % (episode, np.mean(scores[-10:])))
         plt.plot(scores)
-        plt.savefig('plots/sac_resultss.png')
+        plt.savefig('plots/sac_result.png')
         plt.close()
 
         plt.figure(figsize=(20, 5))
@@ -261,7 +261,7 @@ class SacAgent:
         plt.subplot(144)
         plt.title('alpha loss')
         plt.plot(alpha_losses)
-        plt.savefig('plots/sac_lossss.png')
+        plt.savefig('plots/sac_loss.png')
                 
 
 
