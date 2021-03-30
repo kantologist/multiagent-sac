@@ -34,4 +34,4 @@ The agent was able to get an average score (over 100 episode) of 30 in about 275
 
 ### Credit
 
-Most of the code structure for DQN followed this projects [here](https://github.com/MrSyee/pg-is-all-you-need)
+Most of the code structure for SAC followed this projects [here](https://github.com/MrSyee/pg-is-all-you-need)
