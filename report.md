@@ -29,8 +29,8 @@ All Four networks were trained with adam optimizers using the same learning rate
 We were able to get an average score (over 100 episode) of 0.5 in about 800 episodes. The graph of the result is shown below. The graph also includes the q-function losses, the v-function loss and the actor loss. The saved weights can be found in the model_weight directory as `model_weight/mqf1.pt`,
 `model_weight/mqf2.pt`, `model_weight/mvf.pt` and `model_weight/mactor.pt`
 
-![results](../plots/masac_result.png)
-![results](../plots/masac_loss.png)
+![results](plots/masac_result.png)
+![results](plots/masac_loss.png)
 
 ### Credit
 
