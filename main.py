@@ -1,4 +1,5 @@
-""" Packaged Rainbow """
+""" Packaged DRLND """
+import argparse
 import torch
 import numpy as np
 from unityagents import UnityEnvironment
@@ -25,9 +26,9 @@ def navigation_main():
     epsilon_decay = 0.9
 
     agent = DQNAgent(env, memory_size, batch_size, target_update, epsilon_decay)
-    agent.train(num_episode)
+    # agent.train(num_episode)
 
-    agent.test()
+    # agent.test()
 
 def continuous_main():
     env = UnityEnvironment(file_name="Continuous Control/Reacher.app")
@@ -40,9 +41,9 @@ def continuous_main():
     batch_size = 64
 
     agent = SacAgent(env, memory_size, batch_size)
-    agent.train(num_episode)
+    # agent.train(num_episode)
 
-    agent.test()
+    # agent.test()
 
 def ma_main():
     env = UnityEnvironment(file_name="Collaboration and Competition/Tennis.app")
@@ -55,10 +56,21 @@ def ma_main():
     batch_size = 64
 
     agent = MaSacAgent(env, memory_size, batch_size)
-    agent.train(num_episode)
+    # agent.train(num_episode)
 
-    agent.test()
+    # agent.test()
 
 
 if __name__ == "__main__":
-    ma_main()
+    parser = argparse.ArgumentParser(description='Train Rl algorithms')
+    parser.add_argument('-m', '--mode', type= str, default="navigation", 
+                        choices=["navigation", "continuous", "multiagent"],
+                        help='determines which algorithm to train')
+
+    args = parser.parse_args()
+    if args.mode == "continuous":
+        continuous_main()
+    elif args.mode == "multiagent":
+        ma_main()
+    else:
+        navigation_main()
