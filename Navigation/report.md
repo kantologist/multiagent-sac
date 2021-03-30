@@ -24,6 +24,6 @@ The model was trained with an adam optimizer using a learning rate of 5e-5 and a
 
 ### Results
 
-The agent was able to get an average score (over 100 episode) of 13 in about 500 episodes. The graph of the result is shown below. The graph also includes the loss and epsilon.
+The agent was able to get an average score (over 100 episode) of 13 in about 500 episodes. The graph of the result is shown below. The graph also includes the loss and epsilon. The saved weights can be found in the model_weight directory as `model_weight\dqn.pt`
 
 ![results](../plots/dqn_result.png)
