@@ -42,7 +42,7 @@ The task is episodic, and in order to solve the environment, the agent must get 
 
 You would need to run the project from the main directory using 
 
-`python main.py --mode navigation` as explained [here](https://github.com/kantologist/udacity-drlnd/blob/9e74c275b796557ff63f6d0d3401c42dda6509f1/README.md)
+`python main.py --mode navigation` as explained [here](../README.md)
 
 ### Report
- A report containing results can be found [here](https://github.com/kantologist/udacity-drlnd/blob/e7bdc28e1e58fdc52d2df1fd35312e6f69cd6394/Navigation/report.md)
+ A report containing results can be found [here](report.md)

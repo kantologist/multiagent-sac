@@ -127,7 +127,10 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
+
+# custom files
+.DS_Store
 Navigation/Banana.app
-Continuous Control/Reacher 2.app
-Continuous Control/Reacher.app
-Collaboration and Competition/Tennis.app
+ContinuousControl/Reacher 2.app
+ContinuousControl/Reacher.app
+CollaborationAndCompetition/Tennis.app
