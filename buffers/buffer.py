@@ -1,7 +1,7 @@
 """ Packaged DRLND"""
 from typing import Dict, List, Deque, Tuple
 from collections import deque
-import numpy as nps
+import numpy as np
 
 class ReplayBuffer:
 
@@ -41,13 +41,5 @@ class ReplayBuffer:
             rews = self.rews_buf[idx],
             done = self.done_buf[idx])
     
-    def sample_batch_from_idxs(self, 
-                            idx: np.ndarray) -> Dict[str, np.ndarray]:
-                            return dict(obs = self.obs_buf[idx],
-                                        next_obs = self.next_obs_buf[idx],
-                                        acts = self.acts_buf[idx],
-                                        rews = self.rews_buf[idx],
-                                        done = self.done_buf[idx])
-
     def __len__(self) -> int:
         return self.size

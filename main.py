@@ -31,7 +31,7 @@ def navigation_main():
     agent.test()
 
 def continuous_main():
-    env = UnityEnvironment(file_name="Continuous Control/Reacher.app")
+    env = UnityEnvironment(file_name="ContinuousControl/Reacher.app")
     seed = 777
     np.random.seed(seed)
     seed_torch(seed)
@@ -46,7 +46,7 @@ def continuous_main():
     agent.test()
 
 def ma_main():
-    env = UnityEnvironment(file_name="Collaboration and Competition/Tennis.app")
+    env = UnityEnvironment(file_name="CollaborationAndCompetition/Tennis.app")
     seed = 777
     np.random.seed(seed)
     seed_torch(seed)

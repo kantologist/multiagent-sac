@@ -33,7 +33,7 @@ class SacAgent:
         
         self.memory = ReplayBuffer(self.state_size, self.action_size, memory_size, batch_size)
         self.batch_size = batch_size
-        self.memor_size = memory_size
+        self.memory_size = memory_size
         self.gamma = gamma
         self.tau = tau
         self.initial_random_steps = initial_random_steps
@@ -245,7 +245,7 @@ class SacAgent:
         plt.subplot(122)
         plt.title("episode %s. Score: %s" % (episode, np.mean(scores[-10:])))
         plt.plot(scores)
-        plt.savefig('plots/sac_result.png')
+        plt.savefig('plots/sac_resultss.png')
         plt.close()
 
         plt.figure(figsize=(20, 5))
@@ -261,7 +261,7 @@ class SacAgent:
         plt.subplot(144)
         plt.title('alpha loss')
         plt.plot(alpha_losses)
-        plt.savefig('plots/sac_loss.png')
+        plt.savefig('plots/sac_lossss.png')
                 
 
 

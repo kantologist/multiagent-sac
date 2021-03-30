@@ -34,7 +34,7 @@ class DQNAgent:
         state_size = len(state)
         
         self.obs_dim = state_size
-        self.action_dim = action_size
+        self.action_dim = 1
 
         self.memory = ReplayBuffer(self.obs_dim, self.action_dim, memory_size, batch_size)
 
