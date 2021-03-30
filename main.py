@@ -51,7 +51,7 @@ def ma_main():
     np.random.seed(seed)
     seed_torch(seed)
 
-    num_episode = 1500
+    num_episode = 1000
     memory_size = 10000
     batch_size = 64
 

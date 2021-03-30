@@ -16,7 +16,7 @@ The model was trained with an adam optimizer using a learning rate of 5e-5 and a
 
 |  Name | Data Type  | Use  | Value |
 |:------:|:-----------:|:-----:|:------:|
-| Buffer size  |  int |  configuration for maximum capacity of the replay buffer |34|
+| Buffer size  |  int |  configuration for maximum capacity of the replay buffer |10000|
 | Learning rate  | float  |  model learing rate | 5e-5|
 |  Target update | int  | Controls the frequency of updating the target network | 4|
 | Epsilon Decay | float | This determines how the epsilon decreases during training| 0.9 |
