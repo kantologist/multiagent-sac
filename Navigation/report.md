@@ -1,6 +1,6 @@
 # Project Report
 
-The goal of this project was to solve the banana navigation unity environment. The state space is continuous of 37 dimension with values between 0 and 1. The action space is discrete of having 4 possible integral values between o and 4 (inclusive). The reward is either +1 for success and -1 for failure. 
+The goal of this project was to solve the banana navigation unity environment. The state space is continuous of 37 dimension with values between 0 and 1. The action space is discrete of having 4 possible integral values between 0 and 4 (inclusive). The reward is either +1 for success and -1 for failure. 
 
 ### Agent Design
 
