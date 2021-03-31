@@ -15,7 +15,7 @@ def seed_torch(seed):
 
 
 def main():
-    env = UnityEnvironment(file_name="CollaborationAndCompetition/Tennis.app")
+    env = UnityEnvironment(file_name="TennisEnvironment/Tennis.app")
     seed = 777
     np.random.seed(seed)
     seed_torch(seed)
