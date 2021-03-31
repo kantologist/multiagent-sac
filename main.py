@@ -1,4 +1,4 @@
-""" Packaged DRLND """
+""" Packaged MASAC """
 import argparse
 import torch
 import numpy as np
@@ -13,39 +13,8 @@ def seed_torch(seed):
         torch.backends.cudnn.benchmark = False
         torch.backends.cudnn.deterministic = True
 
-def navigation_main():
-    env = UnityEnvironment(file_name="Navigation/Banana.app")
-    seed = 777
-    np.random.seed(seed)
-    seed_torch(seed)
 
-    num_episode = 2000
-    memory_size = 10000
-    batch_size = 64
-    target_update = 4
-    epsilon_decay = 0.9
-
-    agent = DQNAgent(env, memory_size, batch_size, target_update, epsilon_decay)
-    agent.train(num_episode)
-
-    agent.test()
-
-def continuous_main():
-    env = UnityEnvironment(file_name="ContinuousControl/Reacher.app")
-    seed = 777
-    np.random.seed(seed)
-    seed_torch(seed)
-
-    num_episode = 300
-    memory_size = 10000
-    batch_size = 64
-
-    agent = SacAgent(env, memory_size, batch_size)
-    agent.train(num_episode)
-
-    agent.test()
-
-def ma_main():
+def main():
     env = UnityEnvironment(file_name="CollaborationAndCompetition/Tennis.app")
     seed = 777
     np.random.seed(seed)
@@ -63,14 +32,12 @@ def ma_main():
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description='Train Rl algorithms')
-    parser.add_argument('-m', '--mode', type= str, default="navigation", 
-                        choices=["navigation", "continuous", "multiagent"],
+    parser.add_argument('-m', '--mode', type= str, default="multiagent", 
+                        choices=["multiagent"],
                         help='determines which algorithm to train')
 
     args = parser.parse_args()
-    if args.mode == "continuous":
-        continuous_main()
-    elif args.mode == "multiagent":
-        ma_main()
+    if args.mode == "multiagent":
+        main()
     else:
-        navigation_main()
+        main()
