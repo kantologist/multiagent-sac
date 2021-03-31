@@ -130,7 +130,4 @@ dmypy.json
 
 # custom files
 .DS_Store
-Navigation/Banana.app
-ContinuousControl/Reacher 2.app
-ContinuousControl/Reacher.app
-CollaborationAndCompetition/Tennis.app
+TennisEnvironment/Tennis.app

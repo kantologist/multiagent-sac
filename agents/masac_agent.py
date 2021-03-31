@@ -1,3 +1,4 @@
+""" Packaged MASAC"""
 from typing import Dict, List, Tuple
 
 import matplotlib.pyplot as plt
